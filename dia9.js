@@ -10,20 +10,12 @@ function groupBy(collection, it) {
         });
 
     } else {
-        let newValue = collection[0]
-        console.log(newValue[it])
-        console.log(collection[0])
-            // if (typeof(collection[0] === "object")) {
-            //     console.log("object")
-            // } else {
-            //     console.log("not a object")
-            // }
+        collection.map(element => (res.hasOwnProperty(`${element[it]}`) ? res[`${element[it]}`].push(element) : res[`${element[it]}`] = [element]))
+            // console.log(newValue[it])
+            // console.log(collection[0])
+
     }
-
-
-
     console.log(res)
-    console.log("_____________________")
 }
 
 
@@ -34,6 +26,11 @@ groupBy(
     [1397639141184, 1363223700000],
     timestamp => new Date(timestamp).getFullYear()
 )
+groupBy([
+    { title: 'JavaScript: The Good Parts', rating: 8 },
+    { title: 'Aprendiendo Git', rating: 10 },
+    { title: 'Clean Code', rating: 9 },
+], 'rating')
 
 // console.log(typeof(newe))
 // console.log(typeof(lg))
