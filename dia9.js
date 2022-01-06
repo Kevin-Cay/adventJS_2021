@@ -1,20 +1,23 @@
 function groupBy(collection, it) {
 
     let res = {}
-
+        // validar si propiedad it es una función 
     if (typeof(it) === "function") {
-
+        // evaluar si el resultado del elemento dentro de la función existe o no, para añadir o crearlo 
         collection.forEach(element => {
             // console.log(it(element))
             res.hasOwnProperty(`${it(element)}`) ? res[`${it(element)}`].push(element) : res[`${it(element)}`] = [element]
         });
 
     } else {
+        // evaluar si el elemento . it existe o no para crearlo o añadirlo igual que lo anterior 
         collection.map(element => (res.hasOwnProperty(`${element[it]}`) ? res[`${element[it]}`].push(element) : res[`${element[it]}`] = [element]))
             // console.log(newValue[it])
             // console.log(collection[0])
 
     }
+    //se retorna como objeto o JSON 
+    //return res
     console.log(res)
 }
 
@@ -31,9 +34,3 @@ groupBy([
     { title: 'Aprendiendo Git', rating: 10 },
     { title: 'Clean Code', rating: 9 },
 ], 'rating')
-
-// console.log(typeof(newe))
-// console.log(typeof(lg))
-// console.log(newe(6.4))
-// console.log(ys.lg)
-// console.log(obj[ys])
